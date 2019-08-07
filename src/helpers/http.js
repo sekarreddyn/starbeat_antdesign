@@ -11,7 +11,7 @@ http.interceptors.request.use(
     let user = JSON.parse(localStorage.getItem("user"));
 
     if (user && user.token) {
-      config.headers["Authorization"] = "Bearer " + user.token;
+      config.headers["x-auth-token"] = user.token;
     }
 
     return config;

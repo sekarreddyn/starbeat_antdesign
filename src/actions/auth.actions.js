@@ -1,30 +1,40 @@
 import { authConstants } from "../constants";
-import { http, history, appConfig } from "../helpers";
+import { http, history } from "../helpers";
+
 export const authActions = {
   login,
   logout
 };
 
-function login(data) {
+function login({ username, password }) {
   return dispatch => {
-    dispatch(request({ data }));
+    dispatch(request(username));
+
     http
-      .post(`${appConfig.apiUrl}auth/emp-login`, data)
+      .get("auth/internal/login", {
+        params: {
+          username,
+          password
+        }
+      })
       .then(function(response) {
-        if (response.data) {
+        if (response.data.success) {
           let user = {
-            ...response.data,
-            token: response.data.token
+            ...response.data.data,
+            token: response.headers["x-auth-token"]
           };
+
           localStorage.setItem("user", JSON.stringify(user));
+
           dispatch(success(user));
-          history.push("/create-garage");
+
+          history.push("/");
         } else {
-          dispatch(failure(response.data.errors));
+          dispatch(failure(response.data.reason));
         }
       })
       .catch(function(error) {
-        dispatch(failure(error.response.data.errors));
+        dispatch(failure(error));
       });
   };
 
@@ -44,5 +54,16 @@ function logout() {
     localStorage.removeItem("user");
     dispatch({ type: authConstants.LOGOUT });
     history.push("/login");
+
+    /*
+    http
+      .post("auth/internal/logout")
+      .then(function(response) {
+        localStorage.removeItem("user");
+        dispatch({ type: authConstants.LOGOUT });
+      })
+      .catch(function(error) {
+        dispatch({ type: authConstants.LOGOUT });
+      });*/
   };
 }

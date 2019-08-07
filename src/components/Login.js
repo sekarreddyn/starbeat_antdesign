@@ -7,7 +7,7 @@ import "../index.css";
 import { Form, Icon, Input, Button, Row, Col, message, Card } from "antd";
 
 import "../App.css";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo-sm.png";
 
 class NormalLoginForm extends Component {
   handleSubmit = e => {
@@ -36,11 +36,17 @@ class NormalLoginForm extends Component {
         style={{ width: "100%", height: "100vh" }}
       >
         <Card>
-          <Col span={24}>
+          <Col span={24} style={{ textAlign: "center" }}>
             <img
               alt="example"
               src={logo}
-              style={{ width: "100%", marginBottom: 24 }}
+              style={{
+                width: "70px",
+                marginBottom: "24px",
+                textAlign: "center",
+                marginRight: "auto",
+                marginLeft: "auto"
+              }}
             />
             <Form
               onSubmit={this.handleSubmit}
@@ -48,11 +54,12 @@ class NormalLoginForm extends Component {
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",
-                height: "100%"
+                height: "100%",
+                width: 350
               }}
             >
               <Form.Item>
-                {getFieldDecorator("email", {
+                {getFieldDecorator("username", {
                   rules: [
                     { required: true, message: "Please input your email!" }
                   ]

@@ -7,8 +7,8 @@ if (process.env.REACT_APP_API_ENDPOINT) {
   };
 } else {
   config = {
-    apiEndpoint: "/",
-    apiUrl: "api/"
+    apiEndpoint: "https://dev.starbeat.in/",
+    apiUrl: "api/v1/"
   };
 }
 
