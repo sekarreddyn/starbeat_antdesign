@@ -26,7 +26,6 @@ class Sidemenu extends Component {
     }
   }
   render() {
-    console.log(this.props.location);
     const { location } = this.props;
     return (
       <Sider
@@ -47,7 +46,13 @@ class Sidemenu extends Component {
           />
         </div>
 
-        <Menu theme="light" selectedKeys={[location.pathname]} mode="inline">
+        <Menu
+          theme="light"
+          selectedKeys={[location.pathname]}
+          defaultOpenKeys={["sub1", "sub2", "sub3"]}
+          mode="inline"
+          defaultSelectedKeys={["/"]}
+        >
           <Menu.Item key="/">
             <NavLink to="/">
               <Icon type="dashboard" />
@@ -59,25 +64,81 @@ class Sidemenu extends Component {
             key="sub1"
             title={
               <span>
-                <Icon type="mail" />
+                <Icon type="user" />
                 <span>Stars</span>
               </span>
             }
           >
             <Menu.Item key="/web/stars/approved">
               <NavLink to="/web/stars/approved">
-                <Icon type="dashboard" />
+                <Icon type="check-square" />
                 <span>Approved</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/web/stars/pending">
               <NavLink to="/web/stars/pending">
-                <Icon type="dashboard" />
+                <Icon type="info-circle" />
                 <span>Pending</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/web/stars/deleted">
               <NavLink to="/web/stars/deleted">
+                <Icon type="delete" />
+                <span>Deleted</span>
+              </NavLink>
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu
+            key="sub2"
+            title={
+              <span>
+                <Icon type="mail" />
+                <span>Movies</span>
+              </span>
+            }
+          >
+            <Menu.Item key="/web/movies/approved">
+              <NavLink to="/web/movies/approved">
+                <Icon type="dashboard" />
+                <span>Approved</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/movies/pending">
+              <NavLink to="/web/movies/pending">
+                <Icon type="dashboard" />
+                <span>Pending</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/movies/deleted">
+              <NavLink to="/web/movies/deleted">
+                <Icon type="dashboard" />
+                <span>Deleted</span>
+              </NavLink>
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu
+            key="sub3"
+            title={
+              <span>
+                <Icon type="mail" />
+                <span>News</span>
+              </span>
+            }
+          >
+            <Menu.Item key="/web/news/approved">
+              <NavLink to="/web/news/approved">
+                <Icon type="dashboard" />
+                <span>Approved</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/news/pending">
+              <NavLink to="/web/news/pending">
+                <Icon type="dashboard" />
+                <span>Pending</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/news/deleted">
+              <NavLink to="/web/news/deleted">
                 <Icon type="dashboard" />
                 <span>Deleted</span>
               </NavLink>

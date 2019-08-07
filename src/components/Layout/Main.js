@@ -4,6 +4,8 @@ import { Router, Route } from "react-router-dom";
 import Login from "../../components/Login";
 import Dashboard from "../../components/Dashboard";
 import StarList from "../../components/Stars/List";
+import MovieList from "../../components/Movies/List";
+import NewsList from "../../components/News/List";
 import { history } from "../../helpers/history";
 import PrivateRoute from "../../helpers/privateRoute";
 import ErrorBoundary from "../Utilities/ErrorBoundary";
@@ -15,6 +17,8 @@ class RouterApp extends Component {
         <ErrorBoundary>
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute path="/web/stars/:type?" component={StarList} />
+          <PrivateRoute path="/web/movies/:type?" component={MovieList} />
+          <PrivateRoute path="/web/news/:type?" component={NewsList} />
           <Route exact path="/login" component={Login} />
         </ErrorBoundary>
       </Router>
