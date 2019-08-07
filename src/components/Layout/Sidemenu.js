@@ -92,26 +92,26 @@ class Sidemenu extends Component {
             key="sub2"
             title={
               <span>
-                <Icon type="mail" />
+                <Icon type="video-camera" />
                 <span>Movies</span>
               </span>
             }
           >
             <Menu.Item key="/web/movies/approved">
               <NavLink to="/web/movies/approved">
-                <Icon type="dashboard" />
+                <Icon type="check-square" />
                 <span>Approved</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/web/movies/pending">
               <NavLink to="/web/movies/pending">
-                <Icon type="dashboard" />
+                <Icon type="info-circle" />
                 <span>Pending</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/web/movies/deleted">
               <NavLink to="/web/movies/deleted">
-                <Icon type="dashboard" />
+                <Icon type="delete" />
                 <span>Deleted</span>
               </NavLink>
             </Menu.Item>
@@ -127,19 +127,19 @@ class Sidemenu extends Component {
           >
             <Menu.Item key="/web/news/approved">
               <NavLink to="/web/news/approved">
-                <Icon type="dashboard" />
+                <Icon type="check-square" />
                 <span>Approved</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/web/news/pending">
               <NavLink to="/web/news/pending">
-                <Icon type="dashboard" />
+                <Icon type="info-circle" />
                 <span>Pending</span>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/web/news/deleted">
               <NavLink to="/web/news/deleted">
-                <Icon type="dashboard" />
+                <Icon type="delete" />
                 <span>Deleted</span>
               </NavLink>
             </Menu.Item>
