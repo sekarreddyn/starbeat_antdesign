@@ -7,11 +7,25 @@ import { pagable } from "../../helpers";
 const { confirm } = Modal;
 
 class Candidates extends React.Component {
-  state = {};
+  state = { pagination: {} };
   componentDidMount() {
     this.props.dispatch(
       starActions.getAll(this.getType(), pagable, this.getUrl())
     );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.star !== this.props.star) {
+      const { list } = nextProps.star;
+      const { number, totalElements } = list;
+      console.log(number, totalElements);
+      this.setState({
+        pagination: {
+          current: number,
+          total: totalElements
+        }
+      });
+    }
   }
   getType = () => {
     return this.props.match.params;
@@ -20,17 +34,14 @@ class Candidates extends React.Component {
     return this.props.location.pathname;
   };
   handleTableChange = (pagination, filters, sorter) => {
-    let pager = pagination.pageable;
-    delete pager.sort;
+    let pager = pagination;
+    delete pager.total;
     delete pager.pageSize;
-    delete pager.offset;
-    delete pager.paged;
-    delete pager.unpaged;
-    pager.pageNumber = pagination.current;
-    pager.sortField = sorter.field;
-    pager.sortOrder = sorter.order;
-
-    this.props.dispatch(starActions.getAll(pager));
+    pager.pageNo = pagination.current;
+    console.log(pager);
+    this.props.dispatch(
+      starActions.getAll(this.getType(), pager, this.getUrl())
+    );
   };
   deleteStar = item => {
     const { dispatch } = this.props;
@@ -52,6 +63,7 @@ class Candidates extends React.Component {
   render() {
     const { list } = this.props.star;
     const { loading, content } = list;
+    const { pagination } = this.state;
     const columns = [
       {
         title: "Id",
@@ -137,16 +149,14 @@ class Candidates extends React.Component {
 
     return (
       <div>
-        {loading === false && (
-          <Table
-            columns={columns}
-            rowKey={content => content.id}
-            dataSource={content}
-            pagination={content}
-            loading={loading}
-            onChange={this.handleTableChange}
-          />
-        )}
+        <Table
+          columns={columns}
+          rowKey={content => content.id}
+          dataSource={content}
+          pagination={pagination}
+          loading={loading === null ? false : loading}
+          onChange={this.handleTableChange}
+        />
       </div>
     );
   }
