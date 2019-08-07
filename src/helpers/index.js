@@ -4,3 +4,4 @@ export * from "./auth-header";
 export * from "./http";
 export * from "./config";
 export * from "./others";
+export * from "./pagable";

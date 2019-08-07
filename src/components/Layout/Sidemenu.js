@@ -8,6 +8,7 @@ import logoSmall from "../../assets/logo-sm.png";
 import "antd/dist/antd.css";
 import "../../App.css";
 const { Sider } = Layout;
+const { SubMenu } = Menu;
 class Sidemenu extends Component {
   state = {
     collapsed: false
@@ -53,12 +54,35 @@ class Sidemenu extends Component {
               <span>Dashboard</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="/create-garage">
-            <NavLink to="/create-garage">
-              <Icon type="appstore" />
-              <span>Garages</span>
-            </NavLink>
-          </Menu.Item>
+
+          <SubMenu
+            key="sub1"
+            title={
+              <span>
+                <Icon type="mail" />
+                <span>Stars</span>
+              </span>
+            }
+          >
+            <Menu.Item key="/web/stars/approved">
+              <NavLink to="/web/stars/approved">
+                <Icon type="dashboard" />
+                <span>Approved</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/stars/pending">
+              <NavLink to="/web/stars/pending">
+                <Icon type="dashboard" />
+                <span>Pending</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/stars/deleted">
+              <NavLink to="/web/stars/deleted">
+                <Icon type="dashboard" />
+                <span>Deleted</span>
+              </NavLink>
+            </Menu.Item>
+          </SubMenu>
         </Menu>
       </Sider>
     );
