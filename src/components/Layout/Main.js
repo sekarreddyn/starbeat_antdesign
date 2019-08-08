@@ -6,6 +6,7 @@ import Dashboard from "../../components/Dashboard";
 import StarList from "../../components/Stars/List";
 import MovieList from "../../components/Movies/List";
 import NewsList from "../../components/News/List";
+import PostList from "../../components/Posts/List";
 import { history } from "../../helpers/history";
 import PrivateRoute from "../../helpers/privateRoute";
 import ErrorBoundary from "../Utilities/ErrorBoundary";
@@ -19,6 +20,7 @@ class RouterApp extends Component {
           <PrivateRoute path="/web/stars/:type?" component={StarList} />
           <PrivateRoute path="/web/movies/:type?" component={MovieList} />
           <PrivateRoute path="/web/news/:type?" component={NewsList} />
+          <PrivateRoute path="/web/post/:type?" component={PostList} />
           <Route exact path="/login" component={Login} />
         </ErrorBoundary>
       </Router>

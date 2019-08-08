@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Table, Button, Avatar, Modal, Tag, Divider } from "antd";
-import { newsActions } from "../../actions";
+import { postActions } from "../../actions";
 import { pagable } from "../../helpers";
 
 const { confirm } = Modal;
@@ -10,13 +10,13 @@ class Candidates extends React.Component {
   state = { pagination: {}, loading: null };
   componentDidMount() {
     this.props.dispatch(
-      newsActions.getAll(this.getType(), pagable, this.getUrl())
+      postActions.getAll(this.getType(), pagable, this.getUrl())
     );
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.news !== this.props.news) {
-      const { list } = nextProps.news;
+    if (nextProps.post !== this.props.post) {
+      const { list } = nextProps.post;
       const { number, totalElements } = list;
 
       this.setState({
@@ -40,28 +40,28 @@ class Candidates extends React.Component {
     pager.pageNo = pagination.current;
 
     this.props.dispatch(
-      newsActions.getAll(this.getType(), pager, this.getUrl())
+      postActions.getAll(this.getType(), pager, this.getUrl())
     );
   };
   deleteStar = item => {
     const { dispatch } = this.props;
 
     confirm({
-      title: "Are you sure delete this news?",
+      title: "Are you sure delete this post?",
       content: "",
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
 
       onOk() {
-        dispatch(newsActions.deleteStar(item));
+        dispatch(postActions.markForDelete(item.id));
       },
       onCancel() {}
     });
   };
 
   render() {
-    const { list, loading } = this.props.news;
+    const { list, loading } = this.props.post;
     const { content } = list;
 
     const { pagination } = this.state;
@@ -78,10 +78,10 @@ class Candidates extends React.Component {
         render: (text, record) => <span>{record.title}</span>
       },
       {
-        title: "Published date",
+        title: "Creation date",
         sorter: true,
         width: "15%",
-        render: (text, record) => <span>{record.publishedAt}</span>
+        render: (text, record) => <span>{record.creationDate}</span>
       },
       {
         title: "Action",
@@ -91,15 +91,15 @@ class Candidates extends React.Component {
           <span>
             <Button
               type="primary"
-              icon="eye"
+              icon="edit"
               // onClick={() => this.deleteCandidate(record)}
               ghost
             />
             <Divider type="vertical" />
             <Button
               type="primary"
-              icon="edit"
-              // onClick={() => this.deleteCandidate(record)}
+              icon="delete"
+              onClick={() => this.deleteStar(record)}
               ghost
             />
           </span>
@@ -123,7 +123,7 @@ class Candidates extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news.news
+  post: state.post.post
 });
 
 export default connect(mapStateToProps)(Candidates);

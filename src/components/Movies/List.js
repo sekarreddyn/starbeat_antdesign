@@ -47,14 +47,14 @@ class Candidates extends React.Component {
     const { dispatch } = this.props;
 
     confirm({
-      title: "Are you sure delete this star?",
+      title: "Are you sure delete this movie?",
       content: "",
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
 
       onOk() {
-        dispatch(templateActions.deleteStar(item));
+        dispatch(templateActions.deleteTemplate(item));
       },
       onCancel() {}
     });

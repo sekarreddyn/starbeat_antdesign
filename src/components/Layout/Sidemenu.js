@@ -120,7 +120,7 @@ class Sidemenu extends Component {
             key="sub3"
             title={
               <span>
-                <Icon type="mail" />
+                <Icon type="read" />
                 <span>News</span>
               </span>
             }
@@ -148,19 +148,19 @@ class Sidemenu extends Component {
             key="sub4"
             title={
               <span>
-                <Icon type="mail" />
+                <Icon type="file-text" />
                 <span>Posts</span>
               </span>
             }
           >
-            <Menu.Item key="/web/news/approved">
-              <NavLink to="/web/news/approved">
-                <Icon type="check-square" />
+            <Menu.Item key="/web/post/poll">
+              <NavLink to="/web/post/poll">
+                <Icon type="pie-chart" />
                 <span>Polls</span>
               </NavLink>
             </Menu.Item>
-            <Menu.Item key="/web/news/pending">
-              <NavLink to="/web/news/pending">
+            <Menu.Item key="/web/post/poll">
+              <NavLink to="/web/post/poll">
                 <Icon type="plus-circle" />
                 <span>Add a poll</span>
               </NavLink>
