@@ -34,16 +34,29 @@ class Navbar extends Component {
 
   render() {
     return (
-      <Header style={{ background: "#fff", padding: 0 }}>
-        <Icon
-          className="trigger"
-          type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-          onClick={this.toggle}
-        />
-        <Dropdown overlay={this.menu} placement="bottomLeft">
-          <Icon className="trigger" style={{ float: "right" }} type="user" />
-        </Dropdown>
-      </Header>
+      <div>
+        <Header style={{ background: "#fff", padding: 0 }}>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={["2"]}
+            style={{ lineHeight: "64px" }}
+          >
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              onClick={this.toggle}
+            />
+            <Dropdown overlay={this.menu} placement="bottomLeft">
+              <Icon
+                className="trigger"
+                style={{ float: "right" }}
+                type="user"
+              />
+            </Dropdown>
+          </Menu>
+        </Header>
+      </div>
     );
   }
 }

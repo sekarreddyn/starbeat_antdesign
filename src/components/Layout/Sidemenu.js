@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon, Breadcrumb } from "antd";
 import { connect } from "react-redux";
 import logo from "../../assets/logo.png";
 import logoSmall from "../../assets/logo-sm.png";
@@ -32,7 +32,7 @@ class Sidemenu extends Component {
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
-        theme="light"
+        theme="dark"
       >
         <div className="logo">
           <img
@@ -41,13 +41,13 @@ class Sidemenu extends Component {
             style={
               this.state.collapsed
                 ? { width: 40, paddingLeft: 5 }
-                : { width: 110, paddingLeft: 2 }
+                : { width: 150, paddingLeft: 2 }
             }
           />
         </div>
 
         <Menu
-          theme="light"
+          theme="dark"
           selectedKeys={[location.pathname]}
           defaultOpenKeys={["sub1", "sub2", "sub3"]}
           mode="inline"
@@ -141,6 +141,28 @@ class Sidemenu extends Component {
               <NavLink to="/web/news/deleted">
                 <Icon type="delete" />
                 <span>Deleted</span>
+              </NavLink>
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu
+            key="sub4"
+            title={
+              <span>
+                <Icon type="mail" />
+                <span>Posts</span>
+              </span>
+            }
+          >
+            <Menu.Item key="/web/news/approved">
+              <NavLink to="/web/news/approved">
+                <Icon type="check-square" />
+                <span>Polls</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="/web/news/pending">
+              <NavLink to="/web/news/pending">
+                <Icon type="plus-circle" />
+                <span>Add a poll</span>
               </NavLink>
             </Menu.Item>
           </SubMenu>
