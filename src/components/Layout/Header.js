@@ -37,7 +37,7 @@ class Navbar extends Component {
       <div>
         <Header style={{ background: "#fff", padding: 0 }}>
           <Menu
-            theme="dark"
+            theme="light"
             mode="horizontal"
             defaultSelectedKeys={["2"]}
             style={{ lineHeight: "64px" }}

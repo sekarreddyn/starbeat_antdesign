@@ -32,7 +32,7 @@ class Sidemenu extends Component {
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
-        theme="dark"
+        theme="light"
       >
         <div className="logo">
           <img
@@ -47,7 +47,7 @@ class Sidemenu extends Component {
         </div>
 
         <Menu
-          theme="dark"
+          theme="light"
           selectedKeys={[location.pathname]}
           defaultOpenKeys={["sub1", "sub2", "sub3"]}
           mode="inline"
