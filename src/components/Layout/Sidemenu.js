@@ -159,12 +159,6 @@ class Sidemenu extends Component {
                 <span>Polls</span>
               </NavLink>
             </Menu.Item>
-            <Menu.Item key="/web/post/poll">
-              <NavLink to="/web/post/poll">
-                <Icon type="plus-circle" />
-                <span>Add a poll</span>
-              </NavLink>
-            </Menu.Item>
           </SubMenu>
           <Menu.Item key="/web/activity">
             <NavLink to="/web/activity">
