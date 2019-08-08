@@ -113,21 +113,21 @@ class Candidates extends React.Component {
             <Button
               type="primary"
               icon="eye"
-              onClick={() => this.deleteCandidate(record)}
+              // onClick={() => this.deleteCandidate(record)}
               ghost
             />
             <Divider type="vertical" />
             <Button
               type="primary"
               icon="edit"
-              onClick={() => this.deleteCandidate(record)}
+              // onClick={() => this.deleteCandidate(record)}
               ghost
             />
             <Divider type="vertical" />
             <Button
               type="primary"
               icon="delete"
-              onClick={() => this.deleteStar(record)}
+              // onClick={() => this.deleteStar(record)}
               ghost
             />
           </span>

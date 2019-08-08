@@ -166,6 +166,12 @@ class Sidemenu extends Component {
               </NavLink>
             </Menu.Item>
           </SubMenu>
+          <Menu.Item key="/web/activity">
+            <NavLink to="/web/activity">
+              <Icon type="dashboard" />
+              <span>Activity</span>
+            </NavLink>
+          </Menu.Item>
         </Menu>
       </Sider>
     );
