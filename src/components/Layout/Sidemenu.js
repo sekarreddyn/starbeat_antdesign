@@ -33,6 +33,7 @@ class Sidemenu extends Component {
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
         theme="light"
+        width={250}
       >
         <div className="logo">
           <img
